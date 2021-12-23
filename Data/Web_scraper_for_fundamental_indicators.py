@@ -62,7 +62,7 @@ for stock_index in range(len(stock_list)):
     EV_EBIT = get_indicator(soup_wr, 'EVEBIT')
     EV_EBITDA = get_indicator(soup_wr, 'EVEBITDA')
     stock_data = pd.DataFrame(list(zip(stock_quarters, WK, C_WK, Z, C_Z, P, C_P, ZO, C_ZO, WK_Graham, C_WK_Graham, EV, EV_P, EV_EBITDA, EV_EBIT)),
-                              columns=['Kwartały', 'Wartość księgowa', 'Cena/WK', 'Zysk','Cena/Zysk', 'Przychód', 'Cena/Przychód', 'Zysk operacyjny', 'Cena/Zysk operacyjny', 'Wartość księgowa Grahama',
+                              columns=['Kwartały', 'Wartość księgowa', 'Cena/WK', 'Zysk na akcję','Cena/Zysk', 'Przychód', 'Cena/Przychód', 'Zysk operacyjny', 'Cena/Zysk operacyjny', 'Wartość księgowa Grahama',
                                        'Cena/Wartość księgowa Grahama', 'Wartość przedsiębiorstwa', 'Wartość przedsiębiorstwa/Przychody', 'Wartość przedsiębiorstwa/EBIT', 'Wartość przedsiębiorstwa/EBITDA'])
     stock_data.insert(0, 'Spółka', stock_list[stock_index])
     # Profitability indicators
