@@ -1,8 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+import os
 
 directory = r"C:\Users\Kamil\OneDrive\Python projects\Stock-visualisations\Data\WiG20_fundamental_indicators.csv"
+daily_data_directory = r"C:\Users\Kamil\OneDrive\Python projects\Stock-visualisations\Data\Daily_data"
 
 url_wartosc_rynkowa = 'https://www.biznesradar.pl/wskazniki-wartosci-rynkowej/'
 url_rentownosc = 'https://www.biznesradar.pl/wskazniki-rentownosci/'
@@ -10,14 +12,19 @@ url_przeplywy_pieniezne = 'https://www.biznesradar.pl/wskazniki-przeplywow-pieni
 url_zadluzenie = 'https://www.biznesradar.pl/wskazniki-zadluzenia/'
 url_plynnosc = 'https://www.biznesradar.pl/wskazniki-plynnosci/'
 url_aktywnosc = 'https://www.biznesradar.pl/wskazniki-aktywnosci/'
-stock_list = ['ACP', 'ALE', 'ALR', 'CCC', 'CDR', 'CPS', 'DNP', 'JSW', 'KGHM', 'LPP', 'LTS',
-              'MRC', 'OPL', 'PEO', 'PGE', 'PGN', 'PKN', 'PKO', 'PZU', 'SPL', 'TPE']
-
+# stock_list = ['ACP', 'ALE', 'ALR', 'CCC', 'CDR', 'CPS', 'DNP', 'JSW', 'KGHM', 'LPP', 'LTS',
+#               'MRC', 'OPL', 'PEO', 'PGE', 'PGN', 'PKN', 'PKO', 'PZU', 'SPL', 'TPE']
+stock_list = []
 stock_data_list = []
-
 quarters = []
 
 
+# get data of stock that are available in the Daily_data folder
+for filename in os.listdir(daily_data_directory):
+    stock_list.append(filename[:3].upper())
+
+
+# function returns quarters from available data for a single stock
 def get_quarters(soup):
     dates = []
     for date_soup in soup.find_all('th', attrs={"class": "thq h"}):

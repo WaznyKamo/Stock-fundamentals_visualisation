@@ -32,7 +32,7 @@ stock_list = ['01C', '11B', '3RG', '4MS', '4MB', '7FT', '7LV', 'ABE', 'ABK', 'AI
               'IDM', 'IFI', 'IGT', 'IPW', 'IMC', 'IMG', 'IIA', 'IMP', 'IMS', 'INC', 'ICA', 'IVO', 'INS',
               'IDG', 'IFA', 'ING', 'KPI', 'IGN', 'INP', 'INK', 'CAR', 'IRL', 'ITB', 'IMR', 'IUS', 'INT',
               'IPO', 'INL', 'INM', 'IVE', 'IFC', 'IFR', 'IPE', 'IWS', 'IZB', 'IZO', 'IZS', 'JSW', 'JRH',
-              'JRC', 'JJB', 'JWW', 'K2H', 'KME', 'KBJ', 'KCI', 'KDM', 'KER', 'KGH', 'KGL', 'KPL', 'KBT',
+              'JRC', 'JJB', 'JWW',  'KME', 'KBJ', 'KCI', 'KDM', 'KER', 'KGH', 'KGL', 'KPL', 'KBT',
               'KLN', 'KGN', 'KMP', 'KOM', 'K2P', 'KOR', 'KPD', 'KCH', 'KRI', 'KRK', 'KRU', 'KVT', 'KSG',
               'KUB', 'KPC', 'LAB', 'LCN', 'LRK', 'LRQ', 'LPS', 'LEG', 'LEN', 'LTX', 'LES', 'LET', 'LBT',
               'LMG', 'LVC', 'LGT', 'LBD', 'LKD', 'LTM', 'LPP', 'LSI', 'LBW', 'LUD', 'LUG', 'LUK', 'LWB',
