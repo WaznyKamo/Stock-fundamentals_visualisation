@@ -10,7 +10,7 @@ stock_list = ['01C', '11B', '3RG', '4MS', '4MB', '7FT', '7LV', 'ABE', 'ABK', 'AI
               'APA', 'APT', 'ASA', 'APN', 'PRO', 'APC', 'APE', 'AQT', 'AQU', 'AQA', 'ARH', 'ATC', 'ARE',
               'ARG', 'ARR', 'ART', 'AAS', 'ASB', 'ASM', 'AMV', 'ABS', 'ACP', 'ASE', 'AST', 'ASR', '1AT',
               'ATA', 'ATD', 'ATP', 'ATS', 'ATG', 'ATJ', 'ATO', 'ATR', 'APR', 'APS', 'AUX', 'AZC', 'BKD',
-              'WIS', 'BLT', 'SAN', 'BHW', 'MIL', 'PEO', 'BBD', 'BEE', 'BFT', 'BRH', 'BRG', 'BST', 'BCM',
+              'WIS', 'BLT', 'SAN', 'BHW', 'MIL', 'PEO', 'BBD', 'BEE', 'BFT', 'BRH', 'BST', 'BCM',
               'BCS', 'BHX', 'BIP', 'BCX', 'BFC', 'BGD', 'BEP', 'BMX', 'BML', 'BIO', 'BTK', 'BPC', 'BPN',
               'BRP', 'BLO', 'BTG', 'YOL', 'BNP', 'BBT', 'BRS', 'BOS', 'BOW', 'B24', 'BSA', 'BRA', 'BER',
               'BSH', 'BAH', 'BRO', 'BTC', 'BDX', 'BMC', 'BVT', 'CBD', 'CPG', 'CPA', 'GBK', 'CTX', 'ELM',

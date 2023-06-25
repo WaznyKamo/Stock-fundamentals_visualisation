@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import os
+from time import sleep
 
 directory = r"C:\Users\Kamil\OneDrive\Python projects\Stock-visualisations\Data\WiG20_fundamental_indicators.csv"
 daily_data_directory = r"C:\Users\Kamil\OneDrive\Python projects\Stock-visualisations\Data\Daily_data"
@@ -17,7 +18,6 @@ url_aktywnosc = 'https://www.biznesradar.pl/wskazniki-aktywnosci/'
 stock_list = []
 stock_data_list = []
 quarters = []
-
 
 # get data of stock that are available in the Daily_data folder
 for filename in os.listdir(daily_data_directory):
@@ -54,23 +54,28 @@ for stock_index in range(len(stock_list)):
     soup_wr = BeautifulSoup(response_wr.text, features='html.parser')
     stock_quarters = get_quarters(soup_wr)
     # Market value indicators
-    WK = get_indicator(soup_wr, 'WK')                      # book value
-    C_WK = get_indicator(soup_wr, 'CWK')                   # price/book value
-    Z = get_indicator(soup_wr, 'Z')                        # profit
-    C_Z = get_indicator(soup_wr, 'CZ')                     # price/profit
-    P = get_indicator(soup_wr, 'P')                        # income
-    C_P = get_indicator(soup_wr, 'CP')                     # price/income
-    ZO = get_indicator(soup_wr, 'ZO')                      # operational profit
-    C_ZO = get_indicator(soup_wr, 'CZO')                   # price/operational profit
+    WK = get_indicator(soup_wr, 'WK')  # book value
+    C_WK = get_indicator(soup_wr, 'CWK')  # price/book value
+    Z = get_indicator(soup_wr, 'Z')  # profit
+    C_Z = get_indicator(soup_wr, 'CZ')  # price/profit
+    P = get_indicator(soup_wr, 'P')  # income
+    C_P = get_indicator(soup_wr, 'CP')  # price/income
+    ZO = get_indicator(soup_wr, 'ZO')  # operational profit
+    C_ZO = get_indicator(soup_wr, 'CZO')  # price/operational profit
     WK_Graham = get_indicator(soup_wr, 'WKGraham')
     C_WK_Graham = get_indicator(soup_wr, 'CWKGraham')
     EV = get_indicator(soup_wr, 'EV')
     EV_P = get_indicator(soup_wr, 'EVP')
     EV_EBIT = get_indicator(soup_wr, 'EVEBIT')
     EV_EBITDA = get_indicator(soup_wr, 'EVEBITDA')
-    stock_data = pd.DataFrame(list(zip(stock_quarters, WK, C_WK, Z, C_Z, P, C_P, ZO, C_ZO, WK_Graham, C_WK_Graham, EV, EV_P, EV_EBITDA, EV_EBIT)),
-                              columns=['Kwartały', 'Wartość księgowa', 'Cena/WK', 'Zysk na akcję','Cena/Zysk', 'Przychód', 'Cena/Przychód', 'Zysk operacyjny', 'Cena/Zysk operacyjny', 'Wartość księgowa Grahama',
-                                       'Cena/Wartość księgowa Grahama', 'Wartość przedsiębiorstwa', 'Wartość przedsiębiorstwa/Przychody', 'Wartość przedsiębiorstwa/EBIT', 'Wartość przedsiębiorstwa/EBITDA'])
+    stock_data = pd.DataFrame(list(
+        zip(stock_quarters, WK, C_WK, Z, C_Z, P, C_P, ZO, C_ZO, WK_Graham, C_WK_Graham, EV, EV_P, EV_EBITDA, EV_EBIT)),
+                              columns=['Kwartały', 'Wartość księgowa', 'Cena/WK', 'Zysk na akcję', 'Cena/Zysk',
+                                       'Przychód', 'Cena/Przychód', 'Zysk operacyjny', 'Cena/Zysk operacyjny',
+                                       'Wartość księgowa Grahama',
+                                       'Cena/Wartość księgowa Grahama', 'Wartość przedsiębiorstwa',
+                                       'Wartość przedsiębiorstwa/Przychody', 'Wartość przedsiębiorstwa/EBIT',
+                                       'Wartość przedsiębiorstwa/EBITDA'])
     stock_data.insert(0, 'Spółka', stock_list[stock_index])
     # Profitability indicators
     stock_url_rentownosc = url_rentownosc + stock_list[stock_index]
@@ -135,9 +140,9 @@ for stock_index in range(len(stock_list)):
     stock_data['Cykl konwersji gotówki'] = get_indicator(soup_aktywnosc, 'CSP')
 
     stock_data_list.append(stock_data)
+    sleep(3)  # too many requests crashed the site, lowered their frequency
 
 final_dataframe = pd.concat(stock_data_list)
 
 final_dataframe.to_csv(directory, index=False)
 print('File created')
-
